@@ -26,14 +26,15 @@ function crearBotonContraste() {
 function crearContador() {
   const contadorContainer = document.createElement("div");
   contadorContainer.id = "contador-container";
-  contadorContainer.className = "mt-2 text-sm text-gray-600";
+  contadorContainer.className = "text-base text-white font-medium absolute bottom-0 left-0 p-2 bg-gray-800 z-10";
   contadorContainer.innerHTML = `
     <span id="contador-palabras">0 palabras</span> | 
     <span id="contador-caracteres">0 caracteres</span>
   `;
   
-  // Insertar el contador después del textarea
-  markdownInput.parentNode.insertBefore(contadorContainer, markdownInput.nextSibling);
+  // Insertar el contador dentro de la primera sección (donde está el textarea)
+  const editorSection = document.querySelector('section:first-of-type');
+  editorSection.appendChild(contadorContainer);
   
   // Iniciar el contador
   actualizarContador();
