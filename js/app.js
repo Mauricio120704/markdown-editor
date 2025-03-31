@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * Variables para obtener elementos HTML
  */
@@ -5,6 +6,28 @@ const generateHtml = document.querySelector("#generate-html");
 const markdownInput = document.querySelector("#markdown-input");
 const previewSection = document.querySelector("#preview-section");
 
+=======
+// button
+const generateHtml = document.querySelector("#generate-html");
+// textarea
+const markdownInput = document.querySelector("#markdown-input");
+// section preview
+const previewSection = document.querySelector("#preview-section");
+
+const changeBoldOrCursive = document.querySelector("#change-bold-or-cursive");
+ 
+ let state = false;
+ let currentSelectedText = "";
+ 
+ function changeBtnName() {
+   changeBoldOrCursive.textContent = state
+     ? "Cambiar a Negrita"
+     : "Cambiar a cursiva";
+ }
+ 
+ changeBtnName();
+
+>>>>>>> master
 // Variable para rastrear el estado de contraste de los encabezados
 let encabezadosContrastados = false;
 
@@ -121,6 +144,7 @@ function toggleContrasteEncabezados() {
   }
 }
 
+<<<<<<< HEAD
 function getTextFromTextArea() {
   const text = markdownInput.value;
   if (text === ""){
@@ -157,6 +181,8 @@ function convertHeadings(html) {
   return html;
 }
 
+=======
+>>>>>>> master
 function convertLists(text) {
   // Identificar bloques de listas desordenadas
   let result = text;
@@ -210,6 +236,7 @@ function convertFormats(text) {
   return result;
 }
 
+<<<<<<< HEAD
 function convertToHtml(text) {
   let html = text;
   // evaluamos listas (primero para evitar conflictos con otros elementos)
@@ -228,6 +255,11 @@ function renderPreview(html) {
   // Reiniciamos el estado de contraste cuando se genera nueva vista previa
   encabezadosContrastados = false;
 }
+=======
+markdownInput.addEventListener("select", function (event) {
+  getSelectedText(event);
+});
+>>>>>>> master
 
 // Inicializar componentes cuando la página cargue
 document.addEventListener("DOMContentLoaded", function() {
@@ -235,10 +267,19 @@ document.addEventListener("DOMContentLoaded", function() {
   crearContador();
 });
 
+<<<<<<< HEAD
 // TODO: Cuando hagamos click en el boton generateHtml, tenemos que obtener el texto del textarea y trasnformalo a HTML y eso mostrarlo el preview
 generateHtml.addEventListener("click", function () {
   // para obtener el texto de un input usamos el .value
   const text = getTextFromTextArea(); // Obtiene el value del textarea
   const html = convertToHtml(text); // convierte el value a un HTML
   renderPreview(html); // HTML lo muestra en el preview
+=======
+generateHtml.addEventListener("click", function () {
+getTextFromTextArea(convertToHtml);
+});
+
+changeBoldOrCursive.addEventListener("click", function () {
+  getTextFromTextArea(convertToHtml);
+>>>>>>> master
 });
